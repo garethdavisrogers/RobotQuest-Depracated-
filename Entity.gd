@@ -3,12 +3,13 @@ extends KinematicBody2D
 export(int) var speed = 0
 export(int) var max_speed = 300
 export(int) var acceleration = 2
-export(int) var health = 10
+export(int) var health = 1
 export(String) var TYPE = 'ENEMY'
 var movedir = Vector2(0, 0)
 var knockdir = Vector2(0, 0)
 var spritedir = 'left'
 var hitstun = 0
+onready var liteknockback = $damageBox.get('knockback')
 onready var anim = $anim
 var state = 'default'
 
@@ -17,7 +18,11 @@ func state_machine(s):
 		state = s
 		
 func movement_loop():
-	var motion = movedir.normalized() * speed
+	var motion
+	if hitstun == 0:
+		motion = movedir.normalized() * speed
+	else:
+		motion = knockdir.normalized() * speed * 2.5
 	move_and_slide(motion, Vector2(0, 0))
 
 func spritedir_loop():
@@ -45,7 +50,7 @@ func damage_loop():
 		var area_type = area.get_parent().get('TYPE')
 		if hitstun == 0 and area_damage != null and area_type != TYPE:
 			health -= area.get('DAMAGE')
-			hitstun = 15
+			hitstun = 10
 			knockdir = global_transform.origin - area.global_transform.origin
 			
 func slow_backward_movement(default_speed):

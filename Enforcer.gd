@@ -8,18 +8,21 @@ var player_x = null
 var player_y = null
 
 func _physics_process(_delta):
-	damage_loop()
 	if health <= 0:
 		queue_free()
-	match state:
-		'default':
-			state_default()
-		'closing':
-			state_closing()
-		'attack':
-			state_attack()
+	if hitstun > 0:
+		state_stagger()
+	else:
+		match state:
+			'default':
+				state_default()
+			'closing':
+				state_closing()
+			'attack':
+				state_attack()
 
 func state_default():
+	damage_loop()
 	get_player_location()
 	if player_x != null or player_y != null:
 		state_machine('closing')
@@ -29,6 +32,7 @@ func state_default():
 	
 
 func state_closing():
+	damage_loop()
 	get_player_location()
 	movement_loop()
 	spritedir_loop()
@@ -36,24 +40,17 @@ func state_closing():
 	if player_x == null and player_y == null:
 		state_machine('default')
 	else:
-		var abs_x = abs(player_x)
-		var abs_y = abs(player_y)
-		if abs_x < 80 and abs_y < 10:
-			state_machine('attack')
-		else:
-			cooldown_timer.set_wait_time(0)
-			var x_dir = 0
-			var y_dir = 0
-			if abs_x >= 80:
-				x_dir = get_x_vector()
-			if abs_y >= 10:
-				y_dir = get_y_vector()
-			movedir = Vector2(x_dir, y_dir)
+		get_movedir()
 		
 	
 func state_attack():
+	damage_loop()
 	get_player_location()
-	spritedir_loop()
+	movedir = Vector2(0, 0)
+	if player_x > 0:
+		spritedir = 'left'
+	else:
+		spritedir = 'right'
 	var abs_x = abs(player_x)
 	var abs_y = abs(player_y)
 	if abs_x > 120 and abs_y > 30:
@@ -63,7 +60,25 @@ func state_attack():
 			anim_switch('shuffle')
 		else:
 			anim_switch('liteattack1')
-		
+
+func state_stagger():
+	anim_switch('stagger')
+	
+func get_movedir():
+	var abs_x = abs(player_x)
+	var abs_y = abs(player_y)
+	if abs_x < 80 and abs_y < 10:
+		state_machine('attack')
+	else:
+		cooldown_timer.start(0.1)
+		var x_dir = 0
+		var y_dir = 0
+		if abs_x >= 80:
+			x_dir = get_x_vector()
+		if abs_y >= 10:
+			y_dir = get_y_vector()
+		movedir = Vector2(x_dir, y_dir)
+			
 func get_player_location():
 	for body in detect_radius.get_overlapping_bodies():
 		if body.TYPE == 'PLAYER':
@@ -112,4 +127,7 @@ func _on_anim_animation_finished(anim_name):
 	if anim_name == 'liteattack1left' or anim_name == 'liteattack1right':
 		cooldown_timer.start(3)
 	if anim_name == 'shuffleleft' or anim_name == 'shuffleright':
+		state_closing()
+	if anim_name == 'staggerleft' or anim_name == 'staggerright':
+		hitstun = 0
 		state_closing()
