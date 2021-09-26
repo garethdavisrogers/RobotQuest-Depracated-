@@ -12,5 +12,3 @@ position = Vector2( 625.546, 233.638 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 97.9771, 197.462 )
-
-[node name="Enforcer2" parent="YSort" instance=ExtResource( 1 )]

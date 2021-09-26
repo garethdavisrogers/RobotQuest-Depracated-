@@ -1,6 +1,7 @@
 extends "res://Entity.gd"
 
 onready var detect_radius = $detectRadius
+onready var cooldown_timer = $CoolDownTimer
 onready var root = detect_radius.get_parent()
 
 var player_x = null
@@ -32,7 +33,7 @@ func state_closing():
 	movement_loop()
 	spritedir_loop()
 	anim_switch('walk')
-	if player_x == null or player_y == null:
+	if player_x == null and player_y == null:
 		state_machine('default')
 	else:
 		var abs_x = abs(player_x)
@@ -40,6 +41,7 @@ func state_closing():
 		if abs_x < 80 and abs_y < 10:
 			state_machine('attack')
 		else:
+			cooldown_timer.set_wait_time(0)
 			var x_dir = 0
 			var y_dir = 0
 			if abs_x >= 80:
@@ -51,17 +53,17 @@ func state_closing():
 	
 func state_attack():
 	get_player_location()
+	spritedir_loop()
 	var abs_x = abs(player_x)
 	var abs_y = abs(player_y)
-	if abs_x > 90 and abs_y > 20:
+	if abs_x > 120 and abs_y > 30:
 		state_machine('closing')
 	else:
-		if player_x > 0:
-			spritedir = 'left'
+		if cooldown_timer.get_time_left() > 0:
+			anim_switch('shuffle')
 		else:
-			spritedir = 'right'
-		anim_switch('liteattack1')
-
+			anim_switch('liteattack1')
+		
 func get_player_location():
 	for body in detect_radius.get_overlapping_bodies():
 		if body.TYPE == 'PLAYER':
@@ -74,15 +76,11 @@ func get_player_location():
 		
 
 func get_x(x):
-	if x == null:
-		player_x = null
-	elif player_x != x:
+	if player_x != x:
 		player_x = x
 		
 func get_y(y):
-	if y == null:
-		player_y = null
-	elif player_y != y:
+	if player_y != y:
 		player_y = y
 		
 func get_x_vector():
@@ -111,9 +109,7 @@ func _on_detectRadius_body_exited(_body):
 
 
 func _on_anim_animation_finished(anim_name):
-	var attack_anims = ['liteattack1left', 'liteattack1right',
-	'liteattack2left', 'liteattack2right', 'liteattack3left', 'liteattack3right']
-	for anim in attack_anims:
-		if anim == anim_name:
-			state_machine('default')
-			break
+	if anim_name == 'liteattack1left' or anim_name == 'liteattack1right':
+		cooldown_timer.start(3)
+	if anim_name == 'shuffleleft' or anim_name == 'shuffleright':
+		state_closing()
