@@ -39,7 +39,7 @@ func state_attack():
 			combo = 1
 			
 		1:
-			if  time_remaining > 0 and time_remaining < 0.2:
+			if  time_remaining > 0 and time_remaining < 0.18:
 				anim_switch('liteattack2')
 				combo_timer.start(0.4)
 				combo = 2
