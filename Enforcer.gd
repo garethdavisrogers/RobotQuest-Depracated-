@@ -53,7 +53,7 @@ func state_attack():
 		spritedir = 'right'
 	var abs_x = abs(player_x)
 	var abs_y = abs(player_y)
-	if abs_x > 120 and abs_y > 30:
+	if abs_x > 100 and abs_y > 20:
 		state_machine('closing')
 	else:
 		if cooldown_timer.get_time_left() > 0:

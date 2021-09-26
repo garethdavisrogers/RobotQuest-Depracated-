@@ -33,7 +33,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, 30 ) ]
+"values": [ Vector2( 4, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -45,7 +45,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, 0 ) ]
+"values": [ Vector2( 4, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -108,7 +108,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 30 ) ]
+"values": [ Vector2( -4, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -120,7 +120,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 0 ) ]
+"values": [ Vector2( -4, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -185,7 +185,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 8, 30 ), Vector2( 10, 30 ) ]
+"values": [ Vector2( 8, 0 ), Vector2( 10, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -197,7 +197,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 4, 0 ), Vector2( 10, -5 ) ]
+"values": [ Vector2( 4, -30 ), Vector2( 10, -35 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -269,7 +269,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -8, 10 ), Vector2( -22, 0 ) ]
+"values": [ Vector2( -8, -20 ), Vector2( -22, -30 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("damageBox/CollisionShape2D:rotation_degrees")
@@ -310,7 +310,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 30 ), Vector2( -10, 30 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -10, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -322,7 +322,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2, 0 ), Vector2( -10, -5 ) ]
+"values": [ Vector2( -2, -30 ), Vector2( -10, -35 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -394,7 +394,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 8, 10 ), Vector2( 22, 0 ) ]
+"values": [ Vector2( 8, -20 ), Vector2( 22, -30 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("damageBox/CollisionShape2D:rotation_degrees")
@@ -434,7 +434,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 30 ), Vector2( 5, 30 ) ]
+"values": [ Vector2( 2, 0 ), Vector2( 5, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -446,7 +446,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, 0 ) ]
+"values": [ Vector2( 4, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -518,7 +518,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -20, -10 ), Vector2( -15, -12 ) ]
+"values": [ Vector2( -20, -40 ), Vector2( -15, -42 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("damageBox/CollisionShape2D:rotation_degrees")
@@ -558,7 +558,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2, 30 ), Vector2( -5, 30 ) ]
+"values": [ Vector2( -2, 0 ), Vector2( -5, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -570,7 +570,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -4, 0 ) ]
+"values": [ Vector2( -4, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -642,7 +642,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 20, -10 ), Vector2( 15, -12 ) ]
+"values": [ Vector2( 20, -40 ), Vector2( 15, -42 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("damageBox/CollisionShape2D:rotation_degrees")
@@ -682,7 +682,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 10, 30 ) ]
+"values": [ Vector2( 10, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -694,7 +694,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 10, -5 ) ]
+"values": [ Vector2( 10, -35 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -766,7 +766,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -20, 0 ) ]
+"values": [ Vector2( -20, -30 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("damageBox/CollisionShape2D:rotation_degrees")
@@ -806,7 +806,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -10, 30 ) ]
+"values": [ Vector2( -10, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -818,7 +818,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -10, -5 ) ]
+"values": [ Vector2( -10, -35 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -890,7 +890,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 20, 0 ) ]
+"values": [ Vector2( 20, -30 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("damageBox/CollisionShape2D:rotation_degrees")
@@ -931,7 +931,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 30 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -943,7 +943,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -1007,7 +1007,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 30 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -1019,7 +1019,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -1083,7 +1083,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, 30 ) ]
+"values": [ Vector2( 4, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -1095,7 +1095,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, 0 ) ]
+"values": [ Vector2( 4, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -1159,7 +1159,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 30 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("hitBox/CollisionShape2D:position")
@@ -1171,7 +1171,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -30 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:flip_h")
@@ -1214,7 +1214,7 @@ tracks/5/keys = {
 height = 50.0
 
 [sub_resource type="CapsuleShape2D" id=15]
-radius = 8.0
+height = 30.0
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -1225,12 +1225,11 @@ TYPE = "PLAYER"
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-flip_h = true
+offset = Vector2( 0, -30 )
 hframes = 29
-frame = 11
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2( 10, 30 )
 shape = SubResource( 1 )
 
 [node name="ComboTimer" type="Timer" parent="." index="2"]
@@ -1259,7 +1258,7 @@ anims/walkright = SubResource( 13 )
 [node name="hitBox" type="Area2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
-position = Vector2( 10, -5 )
+position = Vector2( 0, -30 )
 shape = SubResource( 14 )
 
 [node name="damageBox" type="Area2D" parent="." index="6"]
@@ -1267,8 +1266,9 @@ script = ExtResource( 4 )
 TYPE = "PLAYER"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damageBox" index="0"]
-position = Vector2( -22, 0 )
-rotation = -1.13446
+position = Vector2( 20, -30 )
+rotation = 1.13446
 shape = SubResource( 15 )
+disabled = true
 [connection signal="timeout" from="ComboTimer" to="." method="_on_ComboTimer_timeout"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

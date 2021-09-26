@@ -8,5 +8,6 @@
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 177.406, -94.1759 )
 
 [node name="Enforcer" parent="YSort" instance=ExtResource( 1 )]
