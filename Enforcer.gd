@@ -9,8 +9,8 @@ var player_y = null
 
 func _physics_process(_delta):
 	if health <= 0:
-		queue_free()
-	if hitstun > 0:
+		anim_switch('fall')
+	elif hitstun > 0:
 		state_stagger()
 	else:
 		match state:
@@ -131,3 +131,5 @@ func _on_anim_animation_finished(anim_name):
 	if anim_name == 'staggerleft' or anim_name == 'staggerright':
 		hitstun = 0
 		state_closing()
+	if anim_name == 'fallleft' or anim_name == 'fallright':
+		queue_free()
