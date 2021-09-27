@@ -15,6 +15,12 @@ func _physics_process(_delta):
 				state_attack()
 			'block':
 				state_block()
+			'ascend':
+				state_ascend()
+			'descend':
+				state_descend()
+			'jump':
+				state_jump()
 
 func state_default():
 	movement_loop()
@@ -37,6 +43,9 @@ func state_default():
 	
 	if Input.is_action_pressed('block'):
 		state_machine('block')
+	
+	if Input.is_action_just_pressed('jump'):
+		state_machine('ascend')
 
 func state_attack():
 	damage_loop()
@@ -66,7 +75,19 @@ func state_block():
 	anim_switch('block')
 	if Input.is_action_just_released('block'):
 		state_machine('default')
-		
+
+func state_ascend():
+	movement_loop()
+	anim_switch('ascend')
+
+func state_descend():
+	movement_loop()
+	anim_switch('descend')
+	
+func state_jump():
+	movement_loop()
+	anim_switch('jump')
+	
 func controls_loop():
 	var LEFT = Input.is_action_pressed('move_left')
 	var RIGHT = Input.is_action_pressed('move_right')
@@ -90,5 +111,11 @@ func _on_anim_animation_finished(anim_name):
 		if anim == anim_name:
 			state_machine('default')
 			break
+	if anim_name == 'ascendleft' or anim_name == 'ascendright':
+		state_machine('jump')
+	if anim_name == 'jumpleft' or anim_name == 'jumpright':
+		state_machine('descend')
+	if anim_name == 'descendleft' or anim_name == 'descendright':
+		state_machine('default')
 
 
