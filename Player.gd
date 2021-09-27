@@ -78,6 +78,7 @@ func state_block():
 
 func state_ascend():
 	movement_loop()
+	movedir.y = 0
 	anim_switch('ascend')
 
 func state_descend():

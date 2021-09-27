@@ -1305,6 +1305,7 @@ position = Vector2( -15, -20 )
 shape = SubResource( 1 )
 
 [node name="detectRadius" type="Area2D" parent="." index="2"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectRadius" index="0"]
 shape = SubResource( 2 )
@@ -1344,8 +1345,6 @@ process_mode = 0
 wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="Node2D" type="Node2D" parent="." index="7"]
 [connection signal="body_entered" from="detectRadius" to="." method="_on_detectRadius_body_entered"]
 [connection signal="body_exited" from="detectRadius" to="." method="_on_detectRadius_body_exited"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
