@@ -4,11 +4,15 @@ onready var dead = false
 onready var combo_timer = $ComboTimer
 
 func _physics_process(_delta):
-	match state:
-		'default':
-			state_default()
-		'attack':
-			state_attack()
+	send_z_index()
+	if health <= 0:
+		queue_free()
+	else:
+		match state:
+			'default':
+				state_default()
+			'attack':
+				state_attack()
 
 func state_default():
 	movement_loop()

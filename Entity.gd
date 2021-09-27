@@ -11,12 +11,17 @@ var spritedir = 'left'
 var hitstun = 0
 onready var liteknockback = $damageBox.get('knockback')
 onready var anim = $anim
+onready var parent = self.get_parent()
 var state = 'default'
 
 func state_machine(s):
 	if state != s:
 		state = s
-		
+
+func send_z_index():
+	var z_info = self.position.y
+	parent.position.y = z_info
+	
 func movement_loop():
 	var motion
 	if hitstun == 0:

@@ -7,7 +7,12 @@
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 177.406, -94.1759 )
+[node name="Player1" type="Node2D" parent="YSort"]
 
-[node name="Enforcer" parent="YSort" instance=ExtResource( 1 )]
+[node name="Player" parent="YSort/Player1" instance=ExtResource( 2 )]
+position = Vector2( 177.406, -94.1759 )
+health = 200
+
+[node name="Enforcer1" type="Node2D" parent="YSort"]
+
+[node name="Enforcer" parent="YSort/Enforcer1" instance=ExtResource( 1 )]

@@ -8,6 +8,7 @@ var player_x = null
 var player_y = null
 
 func _physics_process(_delta):
+	send_z_index()
 	if health <= 0:
 		anim_switch('fall')
 	elif hitstun > 0:
@@ -113,7 +114,7 @@ func get_y_vector():
 		return 1
 	else:
 		return 0
-		
+	
 func _on_detectRadius_body_entered(_body):
 	state_machine('closing')
 
