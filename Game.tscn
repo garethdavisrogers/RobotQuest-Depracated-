@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Enforcer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cheyenne.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D"]
+
+[node name="Cheyenne" parent="." instance=ExtResource( 3 )]
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player1" type="Node2D" parent="YSort"]
 
 [node name="Player" parent="YSort/Player1" instance=ExtResource( 2 )]
-position = Vector2( 177.406, -94.1759 )
+position = Vector2( 173.529, 351.688 )
 health = 200
 
 [node name="Enforcer1" type="Node2D" parent="YSort"]
 
 [node name="Enforcer" parent="YSort/Enforcer1" instance=ExtResource( 1 )]
+position = Vector2( 1236.79, 334.721 )

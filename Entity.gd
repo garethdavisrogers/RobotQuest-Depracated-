@@ -23,6 +23,7 @@ func send_z_index():
 	parent.position.y = z_info
 	
 func movement_loop():
+	clamp_entity()
 	var motion
 	if hitstun == 0:
 		motion = movedir.normalized() * speed
@@ -61,5 +62,8 @@ func damage_loop():
 func slow_backward_movement(default_speed):
 	if spritedir == 'left' and movedir.x > 0 or spritedir == 'right' and movedir.x < 0:
 		speed = default_speed / 2
-		
+
+func clamp_entity():
+	position.x = clamp(position.x, 0, 5000)
+	position.y = clamp(position.y, 0, 600)
 
