@@ -89,7 +89,8 @@ func get_player_location():
 			var player_y_coord = body.position.y
 			get_x(entity_x_coord - player_x_coord)
 			get_y(entity_y_coord - player_y_coord)
-		
+		else:
+			continue
 
 func get_x(x):
 	if player_x != x:

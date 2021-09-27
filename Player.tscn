@@ -1241,6 +1241,10 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 current = true
 zoom = Vector2( 2, 2 )
+limit_left = 0
+limit_top = 0
+limit_right = 5000
+limit_bottom = 640
 
 [node name="anim" parent="." index="4"]
 anims/idleleft = SubResource( 2 )
