@@ -13,6 +13,8 @@ func _physics_process(_delta):
 				state_default()
 			'attack':
 				state_attack()
+			'block':
+				state_block()
 
 func state_default():
 	movement_loop()
@@ -32,8 +34,12 @@ func state_default():
 		
 	if Input.is_action_just_pressed("lite_attack"):
 		state_machine('attack')
+	
+	if Input.is_action_pressed('block'):
+		state_machine('block')
 
 func state_attack():
+	damage_loop()
 	movedir = Vector2(0, 0)
 	var time_remaining = combo_timer.get_time_left()
 	match combo:
@@ -55,7 +61,12 @@ func state_attack():
 				combo = 3
 		3:
 			return
-	
+
+func state_block():
+	anim_switch('block')
+	if Input.is_action_just_released('block'):
+		state_machine('default')
+		
 func controls_loop():
 	var LEFT = Input.is_action_pressed('move_left')
 	var RIGHT = Input.is_action_pressed('move_right')
