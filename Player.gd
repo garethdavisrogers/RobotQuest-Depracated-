@@ -2,6 +2,8 @@ extends "res://Entity.gd"
 var combo = 0
 onready var dead = false
 onready var combo_timer = $ComboTimer
+onready var jump_timer = $JumpTimer
+onready var shadow = null
 
 func _physics_process(_delta):
 	send_z_index()
@@ -23,6 +25,7 @@ func _physics_process(_delta):
 				state_jump()
 
 func state_default():
+	shadow = null
 	movement_loop()
 	spritedir_loop()
 	controls_loop()
@@ -45,6 +48,7 @@ func state_default():
 		state_machine('block')
 	
 	if Input.is_action_just_pressed('jump'):
+		shadow = position.y
 		state_machine('ascend')
 
 func state_attack():
@@ -77,17 +81,27 @@ func state_block():
 		state_machine('default')
 
 func state_ascend():
+	jump_timer.start(0.3)
 	movement_loop()
-	movedir.y = 0
+	movedir.y = -1
 	anim_switch('ascend')
 
 func state_descend():
 	movement_loop()
-	anim_switch('descend')
+	movedir.y = 1
+	if position.y <= shadow:
+		anim_switch('descend')
+	else:
+		state_machine('default')
 	
 func state_jump():
+	print(jump_timer.get_time_left())
 	movement_loop()
 	anim_switch('jump')
+	if Input.is_action_just_released('jump'):
+		state_machine('descend')
+	else:
+		state_machine('jump')
 	
 func controls_loop():
 	var LEFT = Input.is_action_pressed('move_left')
@@ -120,3 +134,7 @@ func _on_anim_animation_finished(anim_name):
 		state_machine('default')
 
 
+
+
+func _on_JumpTimer_timeout():
+	state_machine('descend')
