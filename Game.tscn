@@ -17,7 +17,6 @@ __meta__ = {
 
 [node name="Player" parent="YSort/Player1" instance=ExtResource( 2 )]
 position = Vector2( 173.529, 351.688 )
-health = 200
 
 [node name="Enforcer1" type="Node2D" parent="YSort"]
 

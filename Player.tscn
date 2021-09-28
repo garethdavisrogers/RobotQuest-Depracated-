@@ -2062,7 +2062,9 @@ radius = 5.0
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 speed = 50
-max_speed = 250
+max_speed = 200
+acceleration = 3
+health = 200
 TYPE = "PLAYER"
 
 [node name="Sprite" type="Sprite" parent="." index="0"]

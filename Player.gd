@@ -89,7 +89,7 @@ func state_ascend():
 func state_descend():
 	movement_loop()
 	movedir.y = 1
-	if position.y <= shadow:
+	if shadow != null and position.y <= shadow:
 		anim_switch('descend')
 	else:
 		state_machine('default')
@@ -110,7 +110,8 @@ func controls_loop():
 	var DOWN = Input.is_action_pressed('move_down')
 	
 	movedir.x = -int(LEFT) + int(RIGHT)
-	movedir.y = -int(UP) + int(DOWN)
+	if state != 'jump':
+		movedir.y = -int(UP) + int(DOWN)
 
 
 func _on_ComboTimer_timeout():
