@@ -19,6 +19,7 @@ __meta__ = {
 position = Vector2( 173.529, 351.688 )
 
 [node name="Enforcer1" type="Node2D" parent="YSort"]
+position = Vector2( -132.414, 0 )
 
 [node name="Enforcer" parent="YSort/Enforcer1" instance=ExtResource( 1 )]
 position = Vector2( 1236.79, 334.721 )
@@ -29,21 +30,25 @@ position = Vector2( 1236.79, 334.721 )
 position = Vector2( 687.517, 383.763 )
 
 [node name="Enforcer3" type="Node2D" parent="YSort"]
+position = Vector2( -465.901, 0 )
 
 [node name="Enforcer" parent="YSort/Enforcer3" instance=ExtResource( 1 )]
 position = Vector2( 2036.18, 364.146 )
 
 [node name="Enforcer4" type="Node2D" parent="YSort"]
+position = Vector2( -2525.67, 0 )
 
 [node name="Enforcer" parent="YSort/Enforcer4" instance=ExtResource( 1 )]
 position = Vector2( 4458.86, 374.146 )
 
 [node name="Enforcer5" type="Node2D" parent="YSort"]
+position = Vector2( -1177.01, 134.146 )
 
 [node name="Enforcer" parent="YSort/Enforcer5" instance=ExtResource( 1 )]
 position = Vector2( 3361.85, 284.146 )
 
 [node name="Enforcer6" type="Node2D" parent="YSort"]
+position = Vector2( -1299.62, 0 )
 
 [node name="Enforcer" parent="YSort/Enforcer6" instance=ExtResource( 1 )]
 position = Vector2( 3811.51, 354.146 )

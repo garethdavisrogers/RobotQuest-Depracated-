@@ -4,6 +4,7 @@ onready var dead = false
 onready var combo_timer = $ComboTimer
 onready var jump_timer = $JumpTimer
 onready var shadow = null
+onready var attack_type = null
 
 func _physics_process(_delta):
 	send_z_index()
@@ -23,9 +24,12 @@ func _physics_process(_delta):
 				state_descend()
 			'jump':
 				state_jump()
+			'fly':
+				state_fly()
 
 func state_default():
 	shadow = null
+	attack_type = null
 	movement_loop()
 	spritedir_loop()
 	controls_loop()
@@ -42,8 +46,12 @@ func state_default():
 		anim_switch('idle')
 		
 	if Input.is_action_just_pressed("lite_attack"):
+		attack_type = 'lite'
 		state_machine('attack')
 	
+	if Input.is_action_just_pressed('heavy_attack'):
+		attack_type = 'heavy'
+		state_machine('attack')
 	if Input.is_action_pressed('block'):
 		state_machine('block')
 	
@@ -57,21 +65,24 @@ func state_attack():
 	var time_remaining = combo_timer.get_time_left()
 	match combo:
 		0:
-			anim_switch('liteattack1')
-			combo_timer.start(0.4)
-			combo = 1
+			if attack_type == 'lite':
+				anim_switch('liteattack1')
+				combo_timer.start(0.4)
+				combo = 1
 			
 		1:
 			if  time_remaining > 0 and time_remaining < 0.18:
-				anim_switch('liteattack2')
-				combo_timer.start(0.4)
-				combo = 2
+				if attack_type == 'lite':
+					anim_switch('liteattack2')
+					combo_timer.start(0.4)
+					combo = 2
 				
 		2:
 			if  time_remaining > 0 and time_remaining < 0.2:
-				anim_switch('liteattack3')
-				combo_timer.start(0.4)
-				combo = 3
+				if attack_type == 'lite':
+					anim_switch('liteattack3')
+					combo_timer.start(0.4)
+					combo = 3
 		3:
 			return
 
@@ -102,6 +113,9 @@ func state_jump():
 		state_machine('descend')
 	else:
 		state_machine('jump')
+		
+func state_fly():
+	anim_switch('fly')
 	
 func controls_loop():
 	var LEFT = Input.is_action_pressed('move_left')
