@@ -65,5 +65,5 @@ func slow_backward_movement(default_speed):
 
 func clamp_entity():
 	position.x = clamp(position.x, 0, 5000)
-	position.y = clamp(position.y, 0, 600)
+	position.y = clamp(position.y, 0, 500)
 

@@ -2072,11 +2072,12 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -40 )
 flip_h = true
 hframes = 29
-frame = 10
+frame = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2( 8, 0 )
+position = Vector2( 4, -10 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="ComboTimer" type="Timer" parent="." index="2"]
 process_mode = 0
@@ -2089,9 +2090,10 @@ zoom = Vector2( 1.5, 1.5 )
 limit_left = 0
 limit_top = 0
 limit_right = 5000
-limit_bottom = 640
+limit_bottom = 600
 
 [node name="anim" parent="." index="4"]
+playback_process_mode = 0
 anims/ascendleft = SubResource( 2 )
 anims/ascendright = SubResource( 3 )
 anims/blockleft = SubResource( 4 )
@@ -2116,7 +2118,7 @@ anims/walkright = SubResource( 21 )
 [node name="hitBox" type="Area2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox" index="0"]
-position = Vector2( 4, -30 )
+position = Vector2( 4, -40 )
 shape = SubResource( 22 )
 
 [node name="damageBox" type="Area2D" parent="." index="6"]
@@ -2126,6 +2128,7 @@ TYPE = "PLAYER"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damageBox" index="0"]
 position = Vector2( -8, -20 )
 shape = SubResource( 23 )
+disabled = true
 
 [node name="JumpTimer" type="Timer" parent="." index="7"]
 one_shot = true
