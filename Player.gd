@@ -6,6 +6,10 @@ onready var jump_timer = $JumpTimer
 onready var shadow = null
 onready var attack_type = null
 
+func _ready():
+	position.x = 200
+	position.y = 200
+
 func _physics_process(_delta):
 	send_z_index()
 	if health <= 0:
@@ -131,7 +135,6 @@ func controls_loop():
 func _on_ComboTimer_timeout():
 	combo = 0
 	state_machine('default')
-	
 
 
 func _on_anim_animation_finished(anim_name):

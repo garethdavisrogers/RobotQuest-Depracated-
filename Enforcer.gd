@@ -1,13 +1,10 @@
-extends "res://Entity.gd"
+extends "res://Enemy.gd"
 
-onready var detect_radius = $detectRadius
-onready var cooldown_timer = $CoolDownTimer
-onready var root = detect_radius.get_parent()
-
-var player_x = null
-var player_y = null
-
+func _ready():
+	position.x = 500
+	position.y = 200
 func _physics_process(_delta):
+	print(player_x)
 	send_z_index()
 	if health <= 0:
 		anim_switch('fall')
@@ -24,34 +21,33 @@ func _physics_process(_delta):
 
 func state_default():
 	damage_loop()
-	get_player_location()
-	if player_x != null or player_y != null:
+	movedir = Vector2(0, 0)
+	if player_x != null and player_y != null:
 		state_machine('closing')
 	else:
 		anim_switch('idle')
-		movedir = Vector2(0, 0)
 	
 
 func state_closing():
-	damage_loop()
 	get_player_location()
+	damage_loop()
 	movement_loop()
 	spritedir_loop()
 	anim_switch('walk')
-	if player_x == null and player_y == null:
-		state_machine('default')
-	else:
+	if player_x != null or player_y != null:
 		get_movedir()
-		
+	else:
+		state_machine('default')
 	
 func state_attack():
 	damage_loop()
 	get_player_location()
+	spritedir_loop()
 	movedir = Vector2(0, 0)
 	if player_x > 0:
-		spritedir = 'left'
+		movedir.x = -1
 	else:
-		spritedir = 'right'
+		movedir.x = 1
 	var abs_x = abs(player_x)
 	var abs_y = abs(player_y)
 	if abs_x > 100 and abs_y > 20:
@@ -75,41 +71,16 @@ func get_movedir():
 		var x_dir = 0
 		var y_dir = 0
 		if abs_x >= 80:
-			x_dir = get_x_vector()
+			x_dir = get_vector(player_x)
 		if abs_y >= 10:
-			y_dir = get_y_vector()
-		movedir = Vector2(x_dir, y_dir)
-			
-func get_player_location():
-	for body in detect_radius.get_overlapping_bodies():
-		if body.TYPE == 'PLAYER':
-			var entity_x_coord = root.position.x
-			var entity_y_coord = root.position.y
-			var player_x_coord = body.position.x
-			var player_y_coord = body.position.y
-			get_x(entity_x_coord - player_x_coord)
-			get_y(entity_y_coord - player_y_coord)
+			y_dir = get_vector(player_y)
+		movedir.x = x_dir
+		movedir.y = y_dir
 
-func get_x(x):
-	if player_x != x:
-		player_x = x
-		
-func get_y(y):
-	if player_y != y:
-		player_y = y
-		
-func get_x_vector():
-	if player_x > 0:
+func get_vector(plane):
+	if plane > 0:
 		return -1
-	elif player_x < 0:
-		return 1
-	else:
-		return 0
-
-func get_y_vector():
-	if player_y > 0:
-		return -1
-	elif player_y < 0:
+	elif plane < 0:
 		return 1
 	else:
 		return 0
@@ -127,9 +98,9 @@ func _on_anim_animation_finished(anim_name):
 	if anim_name == 'liteattack1left' or anim_name == 'liteattack1right':
 		cooldown_timer.start(3)
 	if anim_name == 'shuffleleft' or anim_name == 'shuffleright':
-		state_closing()
+		state_machine('closing')
 	if anim_name == 'staggerleft' or anim_name == 'staggerright':
 		hitstun = 0
-		state_closing()
+		state_machine('closing')
 	if anim_name == 'fallleft' or anim_name == 'fallright':
 		queue_free()
