@@ -4,7 +4,6 @@ func _ready():
 	position.x = 500
 	position.y = 200
 func _physics_process(_delta):
-	print(player_x)
 	send_z_index()
 	if health <= 0:
 		anim_switch('fall')
@@ -61,37 +60,15 @@ func state_attack():
 func state_stagger():
 	anim_switch('stagger')
 	
-func get_movedir():
-	var abs_x = abs(player_x)
-	var abs_y = abs(player_y)
-	if abs_x < 80 and abs_y < 10:
-		state_machine('attack')
-	else:
-		cooldown_timer.start(0.1)
-		var x_dir = 0
-		var y_dir = 0
-		if abs_x >= 80:
-			x_dir = get_vector(player_x)
-		if abs_y >= 10:
-			y_dir = get_vector(player_y)
-		movedir.x = x_dir
-		movedir.y = y_dir
+func _on_detectRadius_body_entered(body):
+	if body.TYPE == 'PLAYER':
+		state_machine('closing')
 
-func get_vector(plane):
-	if plane > 0:
-		return -1
-	elif plane < 0:
-		return 1
-	else:
-		return 0
-	
-func _on_detectRadius_body_entered(_body):
-	state_machine('closing')
-
-func _on_detectRadius_body_exited(_body):
-	player_x = null
-	player_y = null
-	state_machine('default')
+func _on_detectRadius_body_exited(body):
+	if body.TYPE == 'PLAYER':
+		player_x = null
+		player_y = null
+		state_machine('default')
 
 
 func _on_anim_animation_finished(anim_name):
