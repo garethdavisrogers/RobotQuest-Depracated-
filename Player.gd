@@ -98,19 +98,18 @@ func state_block():
 func state_ascend():
 	jump_timer.start(0.3)
 	movement_loop()
-	movedir.y = -1
+	position.y -= 4
 	anim_switch('ascend')
 
 func state_descend():
 	movement_loop()
-	movedir.y = 1
+	position.y += 4
 	if shadow != null and position.y <= shadow:
 		anim_switch('descend')
 	else:
 		state_machine('default')
 	
 func state_jump():
-	print(jump_timer.get_time_left())
 	movement_loop()
 	anim_switch('jump')
 	if Input.is_action_just_released('jump'):
