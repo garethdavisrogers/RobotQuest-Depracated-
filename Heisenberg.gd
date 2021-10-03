@@ -1,4 +1,6 @@
 extends "res://Enemy.gd"
+export (PackedScene) var Cigarette
+signal flicked
 
 func _ready():
 	position.x = 700
@@ -51,6 +53,9 @@ func state_attack():
 	var abs_y = abs(player_y)
 	if abs_x > 100 and abs_y > 20:
 		state_machine('closing')
+	elif abs_x < 1000 and abs_y < 30:
+		if cooldown_timer.get_time_left() > 0:
+			anim_switch('rangeattack1')
 	else:
 		if cooldown_timer.get_time_left() > 0:
 			state_machine('closing')
@@ -59,6 +64,10 @@ func state_attack():
 
 func state_stagger():
 	anim_switch('stagger')
+	
+func flick_cigarette():
+	if cooldown_timer.get_time_left() == 0:
+		emit_signal('flicked', Cigarette, $CigaretteSpawn.global_position, movedir.x)
 	
 func _on_detectRadius_body_entered(body):
 	if body.TYPE == 'PLAYER':
@@ -73,6 +82,9 @@ func _on_detectRadius_body_exited(body):
 
 func _on_anim_animation_finished(anim_name):
 	if anim_name == 'liteattack1left' or anim_name == 'liteattack1right':
+		cooldown_timer.start(3)
+	if anim_name == 'rangeattack1left' or anim_name == 'rangeattack1right':
+		flick_cigarette()
 		cooldown_timer.start(3)
 	if anim_name == 'staggerleft' or anim_name == 'staggerright':
 		hitstun = 0

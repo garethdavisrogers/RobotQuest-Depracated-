@@ -9,19 +9,20 @@
 
 [node name="Cheyenne" parent="." instance=ExtResource( 3 )]
 
-[node name="YSort" type="YSort" parent="."]
+[node name="YSort" type="YSort" parent="Cheyenne"]
 
-[node name="Player1" type="Node2D" parent="YSort"]
+[node name="Player1" type="Node2D" parent="Cheyenne/YSort"]
 
-[node name="Player" parent="YSort/Player1" instance=ExtResource( 2 )]
+[node name="Player" parent="Cheyenne/YSort/Player1" instance=ExtResource( 2 )]
 position = Vector2( 1255.87, 422.556 )
 
-[node name="Enforcer1" type="Node2D" parent="YSort"]
+[node name="Enforcer1" type="Node2D" parent="Cheyenne/YSort"]
 
-[node name="Enforcer" parent="YSort/Enforcer1" instance=ExtResource( 1 )]
+[node name="Enforcer" parent="Cheyenne/YSort/Enforcer1" instance=ExtResource( 1 )]
 position = Vector2( 858.939, 412.556 )
 
-[node name="Heisenberg1" type="Node2D" parent="YSort"]
+[node name="Heisenberg1" type="Node2D" parent="Cheyenne/YSort"]
 
-[node name="Heisenberg" parent="YSort/Heisenberg1" instance=ExtResource( 4 )]
+[node name="Heisenberg" parent="Cheyenne/YSort/Heisenberg1" instance=ExtResource( 4 )]
 position = Vector2( 286.313, 430.556 )
+[connection signal="flicked" from="Cheyenne/YSort/Heisenberg1/Heisenberg" to="Cheyenne" method="_on_Heisenberg_flicked"]
