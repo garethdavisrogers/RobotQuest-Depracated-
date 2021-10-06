@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/cheyenne_level.png" type="Texture" id=1]
+[ext_resource path="res://BasicLevelCollisions.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cheyenne.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 502.238, 102.311 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 984.57, 95.4107 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 480.03, 104.506 )
+
+[node name="Cheyenne" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="BasicLevelCollisions" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" type="Sprite" parent="BasicLevelCollisions"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicLevelCollisions"]
+position = Vector2( 503.123, 73.5776 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BasicLevelCollisions"]
+position = Vector2( 2449.14, 77.8349 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BasicLevelCollisions"]
+position = Vector2( 4376.59, 64.0502 )
+shape = SubResource( 3 )

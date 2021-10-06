@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enforcer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cheyenne.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Heisenberg.tscn" type="PackedScene" id=4]
+
+[node name="Game" type="Node2D"]
+
+[node name="Cheyenne" parent="." instance=ExtResource( 3 )]
+
+[node name="YSort" type="YSort" parent="Cheyenne"]
+
+[node name="Player1" type="Node2D" parent="Cheyenne/YSort"]
+
+[node name="Player" parent="Cheyenne/YSort/Player1" instance=ExtResource( 2 )]
+position = Vector2( 1255.87, 422.556 )
+
+[node name="Enforcer1" type="Node2D" parent="Cheyenne/YSort"]
+
+[node name="Enforcer" parent="Cheyenne/YSort/Enforcer1" instance=ExtResource( 1 )]
+position = Vector2( 858.939, 412.556 )
+
+[node name="Heisenberg1" type="Node2D" parent="Cheyenne/YSort"]
+
+[node name="Heisenberg" parent="Cheyenne/YSort/Heisenberg1" instance=ExtResource( 4 )]
+position = Vector2( 286.313, 430.556 )
+[connection signal="flicked" from="Cheyenne/YSort/Heisenberg1/Heisenberg" to="Cheyenne" method="_on_Heisenberg_flicked"]
