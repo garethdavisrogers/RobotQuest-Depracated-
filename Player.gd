@@ -110,6 +110,7 @@ func state_descend():
 		state_machine('default')
 	
 func state_jump():
+	damage_loop()
 	movement_loop()
 	anim_switch('jump')
 	if Input.is_action_just_released('jump'):
